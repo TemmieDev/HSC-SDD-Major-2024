@@ -1,0 +1,51 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(0.968627, 0.501961, 0.196078, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {
+"Default": {
+"mode": 0,
+"name": "Default",
+"pitch_base": 1.0,
+"pitch_variance": 0.0,
+"skip_characters": 0.0,
+"sound_path": "res://Character Art/Eleonore/sound.wav",
+"volume_base": 0.0,
+"volume_variance": 0.0
+}
+},
+"style": ""
+},
+"default_portrait": "Default",
+"description": "",
+"display_name": "Eleonore",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"Book": {
+"export_overrides": {
+"image": "\"res://Character Art/Eleonore/Portraits/Book.png\""
+},
+"mirror": false,
+"offset": Vector2(-260, 200),
+"scale": 1.08,
+"scene": "",
+"sound_mood": "Default"
+},
+"Default": {
+"export_overrides": {
+"image": "\"res://Character Art/Eleonore/Portraits/No Book.png\""
+},
+"mirror": false,
+"offset": Vector2(-260, 200),
+"scale": 1.08,
+"scene": "",
+"sound_mood": "Default"
+}
+},
+"scale": 1.0
+}

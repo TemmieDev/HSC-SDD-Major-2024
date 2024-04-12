@@ -1,0 +1,74 @@
+[gd_scene load_steps=14 format=3 uid="uid://xvvcji1611d3"]
+
+[ext_resource type="Texture2D" uid="uid://b1w2686r6tm7a" path="res://Character Art/Eleonore/Idle/Idle1.png" id="1_0qbj6"]
+[ext_resource type="Script" path="res://Scripts/eleonore.gd" id="1_p0xfj"]
+[ext_resource type="Texture2D" uid="uid://dumpb8x3jprxy" path="res://Character Art/Eleonore/Idle/Idle2.png" id="2_krkd4"]
+[ext_resource type="Texture2D" uid="uid://cn7hmu5gi10qo" path="res://Character Art/Eleonore/Idle/Idle3.png" id="3_bfnm6"]
+[ext_resource type="Texture2D" uid="uid://dfwve7oserayd" path="res://Character Art/Eleonore/Idle/Idle4.png" id="4_1oie2"]
+[ext_resource type="Texture2D" uid="uid://bhvdwtnio8hdy" path="res://Character Art/Eleonore/Idle/Idle5.png" id="5_f2dbg"]
+[ext_resource type="Texture2D" uid="uid://b23ac5n4k2y8e" path="res://Character Art/Eleonore/Idle/Idle6.png" id="6_srl3x"]
+[ext_resource type="Texture2D" uid="uid://btmv2wgpvdsnr" path="res://Character Art/Eleonore/Idle/Idle7.png" id="7_pv1tk"]
+[ext_resource type="Texture2D" uid="uid://bqeoenjwn2xqn" path="res://Character Art/Eleonore/Idle/Idle8.png" id="8_ui2ff"]
+[ext_resource type="Texture2D" uid="uid://rf8glffv7bdn" path="res://Character Art/Eleonore/Idle/Idle9.png" id="9_ik0lv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xb416"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0qbj6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_krkd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bfnm6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1oie2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f2dbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_srl3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pv1tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ui2ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ik0lv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88uik"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onisw"]
+radius = 29.0172
+
+[node name="Eleonore" type="CharacterBody2D"]
+script = ExtResource("1_p0xfj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xb416")
+animation = &"idle"
+frame_progress = 0.695105
+offset = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_88uik")
+
+[node name="detectionarea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detectionarea"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_onisw")
+
+[connection signal="body_entered" from="detectionarea" to="." method="_on_detectionarea_body_entered"]
+[connection signal="body_exited" from="detectionarea" to="." method="_on_detectionarea_body_exited"]
