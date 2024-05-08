@@ -1,12 +1,12 @@
 join Eleonore 1
 label Start
-Eleonore (Default): * Need something?
+Eleonore (Default): Need something?
 - SHOP
-	Eleonore (Book): * Here's what I got.
+	Eleonore (Book): Here's what I got.
 - TALK
-	Eleonore (Default): * What do you want to talk about?
+	Eleonore (Default): What do you want to talk about?
 	- Test
-		Eleonore (Default): * This is a test of how much space is available in the text box and I am going to try and use as much space as I possibly can if it works then that is pretty cool I guess.
+		Eleonore (Default): This is a test of how much space is available in the text box and I am going to try and use as much space as I possibly can if it works then that is pretty cool I guess.
 		jump Start
 - LEAVE
-	Eleonore (Default): * Bye.
+	Eleonore (Default): Bye.

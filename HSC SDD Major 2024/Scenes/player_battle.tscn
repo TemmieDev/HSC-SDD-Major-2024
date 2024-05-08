@@ -1,22 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b14y0y3gumgas"]
+[gd_scene load_steps=6 format=3 uid="uid://b14y0y3gumgas"]
 
-[ext_resource type="Texture2D" uid="uid://bmfjjb6qo5gp5" path="res://Character Art/Main Character/Spritesheet/Movement/Character_Left.png" id="1_6hc6d"]
 [ext_resource type="Script" path="res://Scripts/player_battle.gd" id="1_nl500"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0n5nh"]
-atlas = ExtResource("1_6hc6d")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hexsm"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0n5nh")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://doefv7c1mkxn6" path="res://Character Art/Main Character/Spritesheet/PlayerBattle.png" id="2_i3bk1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwqed"]
 bg_color = Color(0.141176, 0.141176, 0.141176, 1)
@@ -34,9 +19,9 @@ shadow_color = Color(0, 0, 0, 0.556863)
 [node name="player_battle" type="Node2D"]
 script = ExtResource("1_nl500")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(10, 10)
-sprite_frames = SubResource("SpriteFrames_hexsm")
+texture = ExtResource("2_i3bk1")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -154.0
