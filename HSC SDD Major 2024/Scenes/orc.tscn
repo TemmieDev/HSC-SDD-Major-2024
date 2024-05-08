@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://bp84krhha81lc"]
 
-[ext_resource type="Script" path="res://Scenes/orc.gd" id="1_6ur0j"]
+[ext_resource type="Script" path="res://Scripts/orc.gd" id="1_6ur0j"]
 [ext_resource type="Texture2D" uid="uid://bkpqfqhg2qinx" path="res://Character Art/Orc/Idle-Sheet.png" id="1_cnr2y"]
 [ext_resource type="Texture2D" uid="uid://3hgeafca0csw" path="res://Character Art/Orc/Run-Sheet.png" id="2_cq3lh"]
 [ext_resource type="Texture2D" uid="uid://b85mqc60a1mi1" path="res://Extra Art/pixel_style1.png" id="4_ec7re"]

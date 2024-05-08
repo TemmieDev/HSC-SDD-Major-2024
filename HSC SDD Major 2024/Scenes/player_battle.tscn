@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://b14y0y3gumgas"]
+
+[ext_resource type="Texture2D" uid="uid://bmfjjb6qo5gp5" path="res://Character Art/Main Character/Spritesheet/Movement/Character_Left.png" id="1_6hc6d"]
+[ext_resource type="Script" path="res://Scripts/player_battle.gd" id="1_nl500"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n5nh"]
+atlas = ExtResource("1_6hc6d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hexsm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n5nh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwqed"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xp3rl"]
+bg_color = Color(1, 0.184314, 0.235294, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5w01f"]
+font_size = 25
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.556863)
+
+[node name="player_battle" type="Node2D"]
+script = ExtResource("1_nl500")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_hexsm")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -154.0
+offset_top = 122.0
+offset_right = 153.0
+offset_bottom = 169.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rwqed")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xp3rl")
+value = 25.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_right = 307.0
+offset_bottom = 48.0
+text = "25 / 25"
+label_settings = SubResource("LabelSettings_5w01f")
+horizontal_alignment = 1
+vertical_alignment = 1

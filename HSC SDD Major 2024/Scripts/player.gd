@@ -6,11 +6,12 @@ var current_dir = "none"
 var stamina = 3
 var running = false
 var walking = false
-@onready var stamina_bar = $"CanvasLayer/Stamina Bar"
+@onready var stamina_bar = $"AnimatedSprite2D/Stamina Bar"
 @onready var health_bar = $"CanvasLayer/Health Bar"
 
 func _ready():
 	$AnimatedSprite2D.play("down_idle")
+	stamina_bar.hide()
 
 func _physics_process(delta):
 	player_movement(delta)
@@ -59,6 +60,7 @@ func run(delta):
 	if running == true and stamina > 0:
 		stamina -= delta
 		speed = 150
+		stamina_bar.show()
 	else: 
 		speed = 100
 
@@ -67,9 +69,12 @@ func run(delta):
 		stamina += delta / 3
 	elif stamina > 3:
 		stamina = 3
+	elif stamina == 3:
+		stamina_bar.hide()
 	
 	if stamina < 3 and running == false:
 		stamina += delta / 3
+	
 
 func play_anim(movement):
 	var dir = current_dir

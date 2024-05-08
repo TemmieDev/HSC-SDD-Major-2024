@@ -106,4 +106,5 @@ interact={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.184314, 0.258824, 0.607843, 1)
 viewport/hdr_2d=true

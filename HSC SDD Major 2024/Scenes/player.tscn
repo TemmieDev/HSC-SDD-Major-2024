@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://r0sg1bthy4mr"]
+[gd_scene load_steps=49 format=3 uid="uid://r0sg1bthy4mr"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_74bmw"]
 [ext_resource type="Texture2D" uid="uid://dhfc3x16pviov" path="res://Character Art/Main Character/Spritesheet/Movement/Character_Down.png" id="1_myy1f"]
@@ -307,14 +307,17 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp54d"]
+bg_color = Color(0, 0, 0, 0.65098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jksbd"]
+bg_color = Color(0, 0.65098, 0.894118, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_s4ext"]
 radius = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2na1"]
 bg_color = Color(0.972549, 0.211765, 0.188235, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jksbd"]
-bg_color = Color(0, 0.65098, 0.894118, 1)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -325,6 +328,18 @@ script = ExtResource("1_74bmw")
 sprite_frames = SubResource("SpriteFrames_brmya")
 animation = &"down_idle"
 offset = Vector2(0, -10)
+
+[node name="Stamina Bar" type="ProgressBar" parent="AnimatedSprite2D"]
+z_index = 1
+offset_left = -14.0
+offset_top = -26.0
+offset_right = 14.0
+offset_bottom = -21.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sp54d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jksbd")
+max_value = 3.0
+value = 1.5
+show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -350,14 +365,4 @@ offset_right = 595.0
 offset_bottom = 88.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_s2na1")
 value = 50.0
-show_percentage = false
-
-[node name="Stamina Bar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 17.0
-offset_top = 115.0
-offset_right = 595.0
-offset_bottom = 179.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_jksbd")
-max_value = 3.0
-value = 1.5
 show_percentage = false
