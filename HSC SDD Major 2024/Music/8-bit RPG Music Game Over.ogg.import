@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ie1on1m2yfr8"
+path="res://.godot/imported/8-bit RPG Music Game Over.ogg-9d6d76fae2f7029f2c50eb71fe91a4cc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/8-bit RPG Music Game Over.ogg"
+dest_files=["res://.godot/imported/8-bit RPG Music Game Over.ogg-9d6d76fae2f7029f2c50eb71fe91a4cc.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

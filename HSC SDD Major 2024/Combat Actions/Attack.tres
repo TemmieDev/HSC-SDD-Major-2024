@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://0wuym672c22b"]
+
+[ext_resource type="Script" path="res://Scripts/CombatAction.gd" id="1_f6qgc"]
+
+[resource]
+script = ExtResource("1_f6qgc")
+display_name = "Attack"
+damage = 1
+min_dmg = 2
+max_dmg = 6
+heal = 0
+min_heal = 0
+max_heal = 0
+mana_cost = 0
+mana_gained = 0
+max_mana = 0
+min_mana = 0
+miss_pot = 1

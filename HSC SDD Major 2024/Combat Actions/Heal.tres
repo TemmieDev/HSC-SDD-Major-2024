@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://demysvi5r04iw"]
+
+[ext_resource type="Script" path="res://Scripts/CombatAction.gd" id="1_5gn37"]
+
+[resource]
+script = ExtResource("1_5gn37")
+display_name = "Heal (5 Mana)"
+damage = 0
+min_dmg = 0
+max_dmg = 0
+heal = 1
+min_heal = 5
+max_heal = 10
+mana_cost = 5

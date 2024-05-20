@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_gr8dy"]
 [ext_resource type="TileSet" uid="uid://y8v1li5wj4m1" path="res://Tilesets/world.tres" id="1_savwv"]
-[ext_resource type="AudioStream" uid="uid://bf8000vye8ije" path="res://Music/Retro Mystic.ogg" id="3_t2y46"]
 [ext_resource type="PackedScene" uid="uid://r0sg1bthy4mr" path="res://Scenes/player.tscn" id="3_yhewx"]
 [ext_resource type="PackedScene" uid="uid://r75keyyrbe3n" path="res://Scenes/hud.tscn" id="5_mksef"]
 [ext_resource type="PackedScene" uid="uid://4o3uxpsufg1o" path="res://Scenes/skeleton.tscn" id="6_etcbq"]
+[ext_resource type="AudioStream" uid="uid://dl2s0ap1aiwg0" path="res://Music/Walking the World.ogg" id="7_jurqm"]
 [ext_resource type="PackedScene" uid="uid://xvvcji1611d3" path="res://Scenes/eleonore.tscn" id="7_tw80h"]
 [ext_resource type="PackedScene" uid="uid://bp84krhha81lc" path="res://Scenes/orc.tscn" id="8_jdtwn"]
 
@@ -32,6 +32,7 @@ layer_2/tile_data = PackedInt32Array(11, 393216, 3, 589825, 720896, 0, 327690, 3
 position = Vector2(260, 23)
 
 [node name="HUD" parent="." instance=ExtResource("5_mksef")]
+layer = 2
 
 [node name="Skeleton" parent="." instance=ExtResource("6_etcbq")]
 position = Vector2(294, 156)
@@ -44,9 +45,9 @@ position = Vector2(98, 179)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(0, 0, 358, 0, 359, 23, 388, 26, 410, 76, 528, 76, 528, 448, 0, 449, -1, 9, -192, 383, 62, 621, 662, 562, 640, -114, 8, -45, -5, 12, -1, 6)
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(260, 16)
-stream = ExtResource("3_t2y46")
+stream = ExtResource("7_jurqm")
 autoplay = true
 
 [node name="Chest 1" type="Area2D" parent="."]

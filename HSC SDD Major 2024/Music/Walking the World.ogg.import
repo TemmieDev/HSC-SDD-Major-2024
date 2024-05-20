@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dl2s0ap1aiwg0"
+path="res://.godot/imported/Walking the World.ogg-ced5f0e6235fdd48b8a463d142d5abf0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/Walking the World.ogg"
+dest_files=["res://.godot/imported/Walking the World.ogg-ced5f0e6235fdd48b8a463d142d5abf0.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

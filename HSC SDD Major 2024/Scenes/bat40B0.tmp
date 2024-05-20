@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://dtdxci7x1k0rv"]
+
+[ext_resource type="PackedScene" uid="uid://b14y0y3gumgas" path="res://Scenes/player_battle.tscn" id="1_b71gs"]
+[ext_resource type="Script" path="res://Scripts/TurnManager.gd" id="1_u86fr"]
+[ext_resource type="Script" path="res://Scripts/Global.gd" id="2_u6m27"]
+[ext_resource type="Texture2D" uid="uid://doefv7c1mkxn6" path="res://Character Art/Main Character/Spritesheet/PlayerBattle.png" id="3_epf44"]
+[ext_resource type="Resource" uid="uid://0wuym672c22b" path="res://Combat Actions/Attack.tres" id="3_uefjw"]
+[ext_resource type="Resource" uid="uid://demysvi5r04iw" path="res://Combat Actions/Heal.tres" id="4_v045b"]
+[ext_resource type="Resource" uid="uid://b6tw7vev43rui" path="res://Combat Actions/Fire.tres" id="5_554og"]
+[ext_resource type="Resource" uid="uid://di5q03gmu1tk" path="res://Combat Actions/RegenMana.tres" id="6_285r8"]
+[ext_resource type="Script" path="res://Scenes/playerui.gd" id="8_m8hxb"]
+[ext_resource type="Script" path="res://Scenes/CombatActionButton.gd" id="8_ri6iw"]
+[ext_resource type="AudioStream" uid="uid://cfn4mbagvmmea" path="res://Music/Fight 1.ogg" id="10_aknwo"]
+[ext_resource type="AudioStream" uid="uid://ie1on1m2yfr8" path="res://Music/8-bit RPG Music Game Over.ogg" id="11_3h8lf"]
+[ext_resource type="AudioStream" uid="uid://ssoe142aert" path="res://Music/8-bit RPG Music Victory Theme.ogg" id="12_l2dis"]
+[ext_resource type="PackedScene" uid="uid://r75keyyrbe3n" path="res://Scenes/hud.tscn" id="13_tr2ou"]
+
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_char", "enemy_char")]
+script = ExtResource("1_u86fr")
+player_char = NodePath("player_battle")
+enemy_char = NodePath("enemy_battle")
+
+[node name="Global" type="Node" parent="."]
+script = ExtResource("2_u6m27")
+
+[node name="player_battle" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("1_b71gs")]
+position = Vector2(416, -58)
+is_player = true
+combat_actions = [ExtResource("3_uefjw"), ExtResource("4_v045b"), ExtResource("5_554og"), ExtResource("6_285r8")]
+opponent = NodePath("../enemy_battle")
+visual = ExtResource("3_epf44")
+vitality = 15
+magic = 10
+
+[node name="enemy_battle" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("1_b71gs")]
+position = Vector2(-392, -56)
+cur_mana = 50
+max_mana = 50
+combat_actions = [ExtResource("4_v045b"), ExtResource("3_uefjw")]
+opponent = NodePath("../player_battle")
+strength = 0
+vitality = 0
+magic = 0
+enemy = "Orc"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[node name="PlayerCombatActions" type="VBoxContainer" parent="."]
+offset_left = 269.0
+offset_top = 174.0
+offset_right = 567.0
+offset_bottom = 354.0
+script = ExtResource("8_m8hxb")
+buttons = [NodePath("CombatAction"), NodePath("CombatAction2"), NodePath("CombatAction3"), NodePath("CombatAction4"), NodePath("CombatAction5")]
+
+[node name="CombatAction" type="Button" parent="PlayerCombatActions"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("8_ri6iw")
+
+[node name="CombatAction2" type="Button" parent="PlayerCombatActions"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("8_ri6iw")
+
+[node name="CombatAction3" type="Button" parent="PlayerCombatActions"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("8_ri6iw")
+
+[node name="CombatAction4" type="Button" parent="PlayerCombatActions"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("8_ri6iw")
+
+[node name="CombatAction5" type="Button" parent="PlayerCombatActions"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("8_ri6iw")
+
+[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_aknwo")
+volume_db = 10.895
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_3h8lf")
+
+[node name="Victory" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_l2dis")
+
+[node name="HUD" parent="." instance=ExtResource("13_tr2ou")]
+
+[connection signal="pressed" from="PlayerCombatActions/CombatAction" to="PlayerCombatActions/CombatAction" method="_on_pressed"]
+[connection signal="pressed" from="PlayerCombatActions/CombatAction2" to="PlayerCombatActions/CombatAction2" method="_on_pressed"]
+[connection signal="pressed" from="PlayerCombatActions/CombatAction3" to="PlayerCombatActions/CombatAction3" method="_on_pressed"]
+[connection signal="pressed" from="PlayerCombatActions/CombatAction4" to="PlayerCombatActions/CombatAction4" method="_on_pressed"]
+[connection signal="pressed" from="PlayerCombatActions/CombatAction5" to="PlayerCombatActions/CombatAction5" method="_on_pressed"]

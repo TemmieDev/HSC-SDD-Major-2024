@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed = 80
 var player_chase = false
 var player = null
+var battle = preload("res://Scenes/battle_scene.tscn")
 
 func _ready():
 	$AnimatedSprite2D2.hide()
@@ -45,3 +46,13 @@ func _on_detection_area_2_body_entered(body):
 func _on_detection_area_2_body_exited(body):
 	player = null
 	player_chase = false
+
+
+func _on_battle_detection_body_entered(body):
+	if player:
+		Global.enemy = "Skeleton"
+		get_tree().paused = true
+		$"../HUD/AnimationPlayer".play("TransIn")
+		$"../HUD/SFX".play()
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://Scenes/battle_scene.tscn")

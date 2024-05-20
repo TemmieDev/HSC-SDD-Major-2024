@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://di5q03gmu1tk"]
+
+[ext_resource type="Script" path="res://Scripts/CombatAction.gd" id="1_xarru"]
+
+[resource]
+script = ExtResource("1_xarru")
+display_name = "Regen Mana"
+damage = 0
+min_dmg = 0
+max_dmg = 0
+heal = 0
+min_heal = 0
+max_heal = 0
+mana_cost = 0
+mana_gained = 1
+max_mana = 12
+min_mana = 4

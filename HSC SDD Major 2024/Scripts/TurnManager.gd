@@ -3,8 +3,9 @@ extends Node
 @export var player_char : Node
 @export var enemy_char : Node
 var cur_char : Character
+@onready var camera = $BattleCam
 
-@export var next_turn_delay : float = 1
+@export var next_turn_delay : float = 1.5
 
 var game_over : bool = false
 
@@ -12,16 +13,20 @@ signal character_begin_turn(character)
 signal character_end_turn(character)
 
 func _ready():
-	await get_tree().create_timer(0.5).timeout
 	begin_next_turn()
+	$BattleMusic.play()
+	
 
 func begin_next_turn():
 	if cur_char == player_char:
 		cur_char = enemy_char
+		Global.attacker = Global.enemy
 	elif cur_char == enemy_char:
 		cur_char = player_char
+		Global.attacker = "Player"
 	else:
 		cur_char = player_char
+		Global.attacker = "Player"
 	
 	emit_signal("character_begin_turn", cur_char)
 
@@ -34,8 +39,14 @@ func end_current_turn():
 		begin_next_turn()
 
 func character_died(character):
+	$BattleMusic.stop()
 	game_over = true
+	Global.battle_over = true
 	if character.is_player == true:
 		print("Game Over")
+		$GameOver.play()
+		Global.winner = Global.enemy
 	else:
 		print("You Win")
+		$Victory.play()
+		Global.winner = "Player"

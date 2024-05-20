@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ssoe142aert"
+path="res://.godot/imported/8-bit RPG Music Victory Theme.ogg-38ffbcbc7d4d9a09ced0fcee8e53cd6f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/8-bit RPG Music Victory Theme.ogg"
+dest_files=["res://.godot/imported/8-bit RPG Music Victory Theme.ogg-38ffbcbc7d4d9a09ced0fcee8e53cd6f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

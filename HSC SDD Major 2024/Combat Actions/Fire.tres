@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://b6tw7vev43rui"]
+
+[ext_resource type="Script" path="res://Scripts/CombatAction.gd" id="1_y077m"]
+
+[resource]
+script = ExtResource("1_y077m")
+display_name = "Fire (5 Mana)"
+damage = 1
+min_dmg = 12
+max_dmg = 20
+heal = 0
+min_heal = 0
+max_heal = 0
+mana_cost = 5
+mana_gained = 0
+max_mana = 0
+min_mana = 0
+miss_pot = 0

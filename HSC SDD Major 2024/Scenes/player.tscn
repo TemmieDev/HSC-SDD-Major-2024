@@ -345,17 +345,6 @@ show_percentage = false
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_s4ext")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-limit_left = 0
-limit_top = 0
-limit_right = 528
-limit_bottom = 448
-position_smoothing_speed = 10.0
-rotation_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Health Bar" type="ProgressBar" parent="CanvasLayer"]
@@ -366,3 +355,10 @@ offset_bottom = 88.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_s2na1")
 value = 50.0
 show_percentage = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 527
+limit_bottom = 445
