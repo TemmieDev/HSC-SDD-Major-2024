@@ -3,6 +3,8 @@ class_name Character
 
 @onready var battle_scene = get_node("..")
 
+var player_data = PlayerData.new()
+
 @export var is_player : bool
 @export var cur_hp : int = 25
 @export var max_hp : int = 25
@@ -43,12 +45,15 @@ func _ready():
 	mana_bar.max_value = max_mana
 	health_bar.value = cur_hp
 	mana_bar.value = cur_mana
+	cur_mana = clamp(cur_mana, 0, max_mana)
+	cur_hp = clamp(cur_hp, 0, max_hp)
 	health_text.text = str(cur_hp, "/", max_hp)
 	mana_text.text = str(cur_mana, "/", max_mana)
 	$Sprite2D.texture = visual
 	$Sprite2D.flip_h = flip_visual
 	await get_tree().create_timer(1).timeout
 	battle_scene.character_begin_turn.connect(_on_character_begin_turn)
+
 
 func take_damage(damage):
 	cur_hp -= damage
@@ -69,10 +74,10 @@ func take_damage(damage):
 
 func _physics_process(delta):
 	if is_player == true:
-		Global.player_max_mana = max_mana
-		Global.player_cur_mana = cur_mana
-		Global.player_max_hp = max_hp
-		Global.player_cur_hp = cur_hp
+		player_data.max_mana = max_mana
+		player_data.cur_mana = cur_mana
+		player_data.max_hp = max_hp
+		player_data.cur_hp = cur_hp
 
 func heal (amount):
 	cur_hp += amount

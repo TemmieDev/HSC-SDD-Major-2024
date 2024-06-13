@@ -3,6 +3,8 @@ extends Node2D
 var chest_detect = false
 var talking = false
 
+func _ready():
+	SaveLoad.run_load()
 
 func _physics_process(delta):
 	if chest_detect == true and talking == false:

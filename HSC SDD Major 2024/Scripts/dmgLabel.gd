@@ -9,6 +9,8 @@ var dmg
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	label.text = str("A ", Global.enemy, " appeared!")
+	await get_tree().create_timer(1).timeout
 	self.hide()
 	character.enemy_turn.connect(_enemy_turn)
 

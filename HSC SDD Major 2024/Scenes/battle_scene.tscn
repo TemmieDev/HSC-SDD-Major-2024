@@ -193,6 +193,8 @@ label_settings = SubResource("LabelSettings_8eei3")
 stream = ExtResource("10_aknwo")
 volume_db = 10.895
 
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+
 [node name="GameOver" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_3h8lf")
 

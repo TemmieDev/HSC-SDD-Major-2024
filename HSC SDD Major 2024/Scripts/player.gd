@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var health = 100
+var player_data = PlayerData.new()
 var speed = 100
 var current_dir = "none"
 var stamina = 3
@@ -12,7 +12,6 @@ var walking = false
 func _ready():
 	$AnimatedSprite2D.play("down_idle")
 	stamina_bar.hide()
-
 func _physics_process(delta):
 	player_movement(delta)
 	run(delta)
@@ -21,7 +20,9 @@ func _physics_process(delta):
 	else:
 		running = false
 	stamina_bar.value = stamina
-	health_bar.value = health
+	health_bar.value = player_data.cur_hp
+	health_bar.max_value = player_data.max_hp
+	Global.player_pos = self.position
 
 func player_movement(delta):
 	if Input.is_action_pressed("move_right"):

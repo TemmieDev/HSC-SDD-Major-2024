@@ -50,9 +50,10 @@ func _on_detection_area_2_body_exited(body):
 
 func _on_battle_detection_body_entered(body):
 	if player:
+		SaveLoad.run_save()
 		Global.enemy = "Skeleton"
-		get_tree().paused = true
 		$"../HUD/AnimationPlayer".play("TransIn")
 		$"../HUD/SFX".play()
 		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://Scenes/battle_scene.tscn")
+		queue_free()

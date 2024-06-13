@@ -1,7 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://r75keyyrbe3n"]
+[gd_scene load_steps=11 format=3 uid="uid://r75keyyrbe3n"]
 
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_mhjvb"]
 [ext_resource type="AudioStream" uid="uid://vdwx4tdtyoq" path="res://Audio/22_Slash_04.wav" id="2_elddr"]
+
+[sub_resource type="Animation" id="Animation_p6cr1"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_3kcy2"]
 length = 0.001
@@ -48,6 +75,30 @@ tracks/3/path = NodePath("Panel2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fade:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -158,6 +209,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_prpne"]
 _data = {
+"FadeIn": SubResource("Animation_p6cr1"),
 "RESET": SubResource("Animation_3kcy2"),
 "TransIn": SubResource("Animation_xp3s1"),
 "TransOut": SubResource("Animation_c0to3")
@@ -167,6 +219,9 @@ _data = {
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dt1h1"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efju8"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer"]
@@ -204,4 +259,33 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dt1h1")
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_elddr")
 
+[node name="Fade" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_efju8")
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+offset_left = 1247.0
+offset_top = 577.0
+offset_right = 1890.0
+offset_bottom = 734.0
+theme_override_font_sizes/font_size = 50
+text = "load"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+offset_left = 1311.0
+offset_top = 342.0
+offset_right = 1826.0
+offset_bottom = 478.0
+theme_override_font_sizes/font_size = 50
+text = "save"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

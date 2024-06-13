@@ -13,6 +13,7 @@ signal character_begin_turn(character)
 signal character_end_turn(character)
 
 func _ready():
+	Global.battle_over = false
 	begin_next_turn()
 	$BattleMusic.play()
 	
@@ -50,3 +51,7 @@ func character_died(character):
 		print("You Win")
 		$Victory.play()
 		Global.winner = "Player"
+		await get_tree().create_timer(5).timeout
+		$HUD/AnimationPlayer.play("FadeIn")
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")

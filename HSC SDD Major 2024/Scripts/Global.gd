@@ -13,3 +13,5 @@ var attacker : String = "Player"
 var attack_type : String
 var winner : String
 var battle_over : bool = false
+
+var player_pos : Vector2
