@@ -4,6 +4,8 @@ var speed = 80
 var player_chase = false
 var player = null
 
+var battle = load("res://Scenes/battle_scene.tscn")
+
 func _ready():
 	$AnimatedSprite2D2.hide()
 
@@ -51,6 +53,9 @@ func _on_battle_detection_body_entered(body):
 	Global.enemy = "Orc"
 	$"../HUD/AnimationPlayer".play("TransIn")
 	$"../HUD/SFX".play()
+	get_tree().paused = true
 	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file("res://Scenes/battle_scene.tscn")
+	var battleTemp = battle.instantiate()
+	get_parent().add_child(battleTemp)
 	queue_free()
+	$"../HUD/AnimationPlayer".play("TransOut")

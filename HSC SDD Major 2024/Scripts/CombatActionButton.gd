@@ -1,7 +1,7 @@
 extends Button
 
 var combat_action : CombatAction
-@onready var battle_scene = get_node("../../..")
+@onready var battle_scene = get_node("../../../..")
 
 signal panel
 

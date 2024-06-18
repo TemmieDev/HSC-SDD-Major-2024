@@ -26,3 +26,11 @@ func _on_chest_1_body_exited(body):
 	if body.has_method("player"):
 		chest_detect = false
 		Dialogic.end_timeline()
+
+
+func _on_area_2d_body_entered(body):
+	if body.has_method("player"):
+		$HUD/AnimationPlayer.play("TransIn")
+		$HUD/SFX.play()
+		await get_tree().create_timer(0.5).timeout
+		get_tree().change_scene_to_file("res://Scenes/dungeon.tscn")

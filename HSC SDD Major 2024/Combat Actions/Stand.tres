@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CombatAction" load_steps=2 format=3 uid="uid://cjo7dk61hukh8"]
+
+[ext_resource type="Script" path="res://Scripts/CombatAction.gd" id="1_gq7yf"]
+
+[resource]
+script = ExtResource("1_gq7yf")
+display_name = "Stand"
+damage = 0
+min_dmg = 0
+max_dmg = 0
+heal = 0
+min_heal = 0
+max_heal = 0
+mana_cost = 0
+mana_gained = 0
+max_mana = 0
+min_mana = 0
+miss_pot = 0

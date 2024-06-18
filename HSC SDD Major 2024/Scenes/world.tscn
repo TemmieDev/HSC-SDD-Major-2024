@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ctfgosmwjq8wq"]
+[gd_scene load_steps=11 format=3 uid="uid://ctfgosmwjq8wq"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_gr8dy"]
 [ext_resource type="TileSet" uid="uid://y8v1li5wj4m1" path="res://Tilesets/world.tres" id="1_savwv"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://dl2s0ap1aiwg0" path="res://Music/Walking the World.ogg" id="7_jurqm"]
 [ext_resource type="PackedScene" uid="uid://xvvcji1611d3" path="res://Scenes/eleonore.tscn" id="7_tw80h"]
 [ext_resource type="PackedScene" uid="uid://bp84krhha81lc" path="res://Scenes/orc.tscn" id="8_jdtwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lihjk"]
+size = Vector2(20, 90)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5crq"]
 radius = 11.0
@@ -45,6 +48,13 @@ position = Vector2(98, 179)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(0, 0, 358, 0, 359, 23, 388, 26, 410, 76, 528, 76, 528, 448, 0, 449, -1, 9, -192, 383, 62, 621, 662, 562, 640, -114, 8, -45, -5, 12, -1, 6)
 
+[node name="Area2D" type="Area2D" parent="collisions"]
+position = Vector2(510, 149)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collisions/Area2D"]
+position = Vector2(8, 11)
+shape = SubResource("RectangleShape2D_lihjk")
+
 [node name="Music" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(260, 16)
 stream = ExtResource("7_jurqm")
@@ -59,5 +69,6 @@ shape = SubResource("CircleShape2D_r5crq")
 [node name="orc" parent="." instance=ExtResource("8_jdtwn")]
 position = Vector2(269, 321)
 
+[connection signal="body_entered" from="collisions/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Chest 1" to="." method="_on_chest_1_body_entered"]
 [connection signal="body_exited" from="Chest 1" to="." method="_on_chest_1_body_exited"]

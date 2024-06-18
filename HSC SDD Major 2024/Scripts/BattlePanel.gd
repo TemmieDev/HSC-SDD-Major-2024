@@ -7,5 +7,5 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	$HealthLabel.text = "Health: "+ str(player_data.cur_hp) + "/" + str(player_data.max_hp)
-	$ManaLabel.text = "Mana: "+ str(player_data.cur_mana) + "/" + str(player_data.max_mana)
+	$HealthLabel.text = "Health: "+ str(Global.player_cur_hp) + "/" + str(Global.player_max_hp)
+	$ManaLabel.text = "Mana: "+ str(Global.player_cur_mana) + "/" + str(Global.player_max_mana)

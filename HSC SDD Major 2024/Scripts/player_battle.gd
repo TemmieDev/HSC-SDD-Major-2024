@@ -1,7 +1,7 @@
 extends Node2D
 class_name Character
 
-@onready var battle_scene = get_node("..")
+@onready var battle_scene = get_node("../..")
 
 var player_data = PlayerData.new()
 
@@ -66,6 +66,7 @@ func take_damage(damage):
 	
 	
 	if cur_hp <= 0:
+		cur_hp = 0 
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "modulate", Color(255, 0, 0, 0), 0.8)
 		await get_tree().create_timer(1).timeout
@@ -74,10 +75,10 @@ func take_damage(damage):
 
 func _physics_process(delta):
 	if is_player == true:
-		player_data.max_mana = max_mana
-		player_data.cur_mana = cur_mana
-		player_data.max_hp = max_hp
-		player_data.cur_hp = cur_hp
+		Global.player_max_mana = max_mana
+		Global.player_cur_mana = cur_mana
+		Global.player_max_hp = max_hp
+		Global.player_cur_hp = cur_hp
 
 func heal (amount):
 	cur_hp += amount
@@ -131,6 +132,8 @@ func cast_combat_action(action):
 				Global.dmg_dealt = action.mana_gained
 			else:
 				Global.attack_type = "Nothing"
+		else:
+			Global.attack_type = "Nothing"
 		_update_mana_bar()
 	else:
 		Global.attack_type = "NoMana"

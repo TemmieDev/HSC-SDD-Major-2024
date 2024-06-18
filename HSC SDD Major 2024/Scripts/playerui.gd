@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 @export var buttons : Array
-@onready var battle_scene = get_node("../..")
+@onready var battle_scene = get_node("../../..")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
