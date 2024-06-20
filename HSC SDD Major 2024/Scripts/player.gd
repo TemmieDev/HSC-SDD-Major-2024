@@ -7,28 +7,43 @@ var stamina = 3
 var running = false
 var walking = false
 @onready var stamina_bar = $"AnimatedSprite2D/Stamina Bar"
-@onready var health_bar = $"CanvasLayer/Health Bar"
-@onready var menu = $Menu
+@onready var tilemap = get_tree().current_scene.find_child("TileMap")
+
+var area : String = "": 
+	set(value): 
+		area = value
+		%Tile.text = value
+
+var step_size : int = 7
+
+var distance_in_pixel: float = 0.0:
+	set(value):
+		distance_in_pixel = value
+		var step = distance_in_pixel / step_size
+		
+		%Distance.text = "%d" % step
+		
+		if step >= Manager.encounter_number:
+			Manager.change_scene()
+			distance_in_pixel = 0.0
 
 func _ready():
 	$AnimatedSprite2D.play("down_idle")
 	stamina_bar.hide()
-	menu.hide()
+	
 func _physics_process(delta):
+	Manager.playerArea = area
+	var initial_position = position
+	update_tile()
 	player_movement(delta)
+	distance_in_pixel += position.distance_to(initial_position)
 	run(delta)
 	if Input.is_action_pressed("run") and walking == true:
 		running = true
 	else:
 		running = false
 	stamina_bar.value = stamina
-	health_bar.value = player_data.cur_hp
-	health_bar.max_value = player_data.max_hp
 	Global.player_pos = self.position
-	if Input.is_action_pressed("menu") and menu.hide() == true:
-		menu.show()
-	elif Input.is_action_pressed("menu") and menu.show() == true:
-		menu.hide()
 
 func player_movement(delta):
 	if Input.is_action_pressed("move_right"):
@@ -114,3 +129,8 @@ func play_anim(movement):
 
 func player():
 	pass
+
+func update_tile():
+	var tiledata = tilemap.get_cell_tile_data(0, tilemap.local_to_map(position))
+	if tiledata:
+		area = tiledata.get_custom_data("Area")

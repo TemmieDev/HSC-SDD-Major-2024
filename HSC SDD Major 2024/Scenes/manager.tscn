@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://x86su8ih1ah3"]
+
+[ext_resource type="Script" path="res://Scenes/manager.gd" id="1_15ntg"]
+
+[node name="Manager" type="Node2D"]
+script = ExtResource("1_15ntg")
+
+[node name="Debug" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Debug"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Debug/HBoxContainer"]
+layout_mode = 2
+text = "Encounter at "
+
+[node name="Encounter" type="Label" parent="Debug/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2

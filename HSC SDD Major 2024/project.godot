@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Manager="*res://Scenes/manager.tscn"
 Global="*res://Scripts/Global.gd"
 SaveLoad="*res://Scripts/SaveLoad.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"

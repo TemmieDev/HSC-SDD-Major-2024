@@ -4,7 +4,10 @@ var chest_detect = false
 var talking = false
 
 func _ready():
+	$BackgroundMusic.play()
+	Global.cur_location = "World"
 	SaveLoad.run_load()
+	Global.levelup()
 
 func _physics_process(delta):
 	if chest_detect == true and talking == false:
@@ -12,6 +15,8 @@ func _physics_process(delta):
 			Dialogic.start("Chest Interaction")
 			talking = true
 			Dialogic.timeline_ended.connect(_on_timeline_ended)
+
+
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

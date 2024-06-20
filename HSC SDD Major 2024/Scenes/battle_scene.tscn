@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtdxci7x1k0rv"]
+[gd_scene load_steps=37 format=3 uid="uid://dtdxci7x1k0rv"]
 
 [ext_resource type="PackedScene" uid="uid://b14y0y3gumgas" path="res://Scenes/player_battle.tscn" id="1_b71gs"]
 [ext_resource type="Script" path="res://Scripts/TurnManager.gd" id="1_u86fr"]
@@ -44,6 +44,18 @@ font_names = PackedStringArray("Eight Bit Dragon")
 font = SubResource("SystemFont_ty5vi")
 font_size = 24
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dtkm3"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyib8"]
+bg_color = Color(0.258824, 0.658824, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duna2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbolh"]
+bg_color = Color(0.301961, 0.537255, 1, 1)
+
 [sub_resource type="SystemFont" id="SystemFont_f57jh"]
 font_names = PackedStringArray("Eight Bit Dragon")
 
@@ -78,17 +90,16 @@ script = ExtResource("1_u86fr")
 player_char = NodePath("CanvasLayer/player_battle")
 enemy_char = NodePath("CanvasLayer/enemy_battle")
 
-[node name="BattleMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_aknwo")
-volume_db = 10.895
 
-[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
-
-[node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_3h8lf")
+volume_db = -8.433
 
-[node name="Victory" type="AudioStreamPlayer2D" parent="."]
+[node name="Victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_l2dis")
+volume_db = -8.433
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -143,14 +154,34 @@ offset_bottom = 74.0
 text = "Health: 25/25"
 label_settings = SubResource("LabelSettings_y41dw")
 
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Panel/HealthLabel"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 222.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dtkm3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oyib8")
+value = 50.0
+show_percentage = false
+
 [node name="ManaLabel" type="Label" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 595.0
-offset_top = 40.0
-offset_right = 750.0
-offset_bottom = 74.0
+offset_left = 391.333
+offset_top = 93.2666
+offset_right = 560.333
+offset_bottom = 127.266
 text = "Mana: 25/25"
 label_settings = SubResource("LabelSettings_y41dw")
+
+[node name="ManaBar" type="ProgressBar" parent="CanvasLayer/Panel/ManaLabel"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 222.0
+offset_bottom = 40.0
+theme_override_styles/background = SubResource("StyleBoxFlat_duna2")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cbolh")
+value = 50.0
+show_percentage = false
 
 [node name="Panel2" type="Panel" parent="CanvasLayer"]
 offset_left = 401.0
@@ -214,9 +245,9 @@ offset_bottom = 35.0
 text = "SKILLS"
 label_settings = SubResource("LabelSettings_8eei3")
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
 z_index = -5
-position = Vector2(975, 534)
+position = Vector2(975, 548.9)
 scale = Vector2(1.8, 1.8)
 texture = ExtResource("15_xu4du")
 

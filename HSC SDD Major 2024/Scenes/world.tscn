@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctfgosmwjq8wq"]
+[gd_scene load_steps=9 format=3 uid="uid://ctfgosmwjq8wq"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_gr8dy"]
 [ext_resource type="TileSet" uid="uid://y8v1li5wj4m1" path="res://Tilesets/world.tres" id="1_savwv"]
 [ext_resource type="PackedScene" uid="uid://r0sg1bthy4mr" path="res://Scenes/player.tscn" id="3_yhewx"]
 [ext_resource type="PackedScene" uid="uid://r75keyyrbe3n" path="res://Scenes/hud.tscn" id="5_mksef"]
-[ext_resource type="PackedScene" uid="uid://4o3uxpsufg1o" path="res://Scenes/skeleton.tscn" id="6_etcbq"]
 [ext_resource type="AudioStream" uid="uid://dl2s0ap1aiwg0" path="res://Music/Walking the World.ogg" id="7_jurqm"]
 [ext_resource type="PackedScene" uid="uid://xvvcji1611d3" path="res://Scenes/eleonore.tscn" id="7_tw80h"]
-[ext_resource type="PackedScene" uid="uid://bp84krhha81lc" path="res://Scenes/orc.tscn" id="8_jdtwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lihjk"]
 size = Vector2(20, 90)
@@ -37,9 +35,6 @@ position = Vector2(260, 23)
 [node name="HUD" parent="." instance=ExtResource("5_mksef")]
 layer = 2
 
-[node name="Skeleton" parent="." instance=ExtResource("6_etcbq")]
-position = Vector2(294, 156)
-
 [node name="Eleonore" parent="." instance=ExtResource("7_tw80h")]
 position = Vector2(98, 179)
 
@@ -55,19 +50,14 @@ position = Vector2(510, 149)
 position = Vector2(8, 11)
 shape = SubResource("RectangleShape2D_lihjk")
 
-[node name="Music" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(260, 16)
-stream = ExtResource("7_jurqm")
-autoplay = true
-
 [node name="Chest 1" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="Chest 1"]
 position = Vector2(296, 121)
 shape = SubResource("CircleShape2D_r5crq")
 
-[node name="orc" parent="." instance=ExtResource("8_jdtwn")]
-position = Vector2(269, 321)
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jurqm")
 
 [connection signal="body_entered" from="collisions/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Chest 1" to="." method="_on_chest_1_body_entered"]

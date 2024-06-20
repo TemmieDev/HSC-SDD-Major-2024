@@ -1,6 +1,8 @@
 extends Node2D
 class_name Character
 
+#idea: Fire/heart icon that represents the potency of the move. Will update every player turn
+
 @onready var battle_scene = get_node("../..")
 
 var player_data = PlayerData.new()
@@ -34,17 +36,21 @@ var random = RandomNumberGenerator.new()
 signal enemy_turn
 
 func _ready():
+	if is_player == true:
+		max_mana = Global.player_max_mana
+		cur_mana = Global.player_cur_mana
+		max_hp = Global.player_max_hp
+		cur_hp = Global.player_cur_hp
+		strength = Global.player_str
+		vitality = Global.player_vit
+		magic = Global.player_mag
 	enemy = Global.enemy
 	if is_player != true:
 		enemy_type()
-	max_mana = max_mana * magic /5
-	cur_mana = cur_mana * magic /5
-	max_hp = max_hp * vitality /5
-	cur_hp = cur_hp * vitality /5
-	health_bar.max_value = max_hp
-	mana_bar.max_value = max_mana
-	health_bar.value = cur_hp
-	mana_bar.value = cur_mana
+		max_mana = max_mana * magic /5
+		cur_mana = cur_mana * magic /5
+		max_hp = max_hp * vitality /5
+		cur_hp = cur_hp * vitality /5
 	cur_mana = clamp(cur_mana, 0, max_mana)
 	cur_hp = clamp(cur_hp, 0, max_hp)
 	health_text.text = str(cur_hp, "/", max_hp)
@@ -111,13 +117,13 @@ func cast_combat_action(action):
 			else:
 				action.damage = strength + (random.randi_range(action.min_dmg, action.max_dmg)/2)
 				opponent.take_damage(action.damage)
-				print("You dealt", str(action.damage), "DMG!")
+				print("You dealt ", str(action.damage), " DMG!")
 				Global.attack_type = "Attack"
 				Global.dmg_dealt = action.damage
 		elif action.heal > 0:
 			action.heal = magic + (random.randi_range(action.min_heal, action.max_heal)/2)
 			heal(action.heal)
-			print("You healed", str(action.heal), "HP!")
+			print("You healed ", str(action.heal), " HP!")
 			Global.attack_type = "Heal"
 			Global.dmg_dealt = action.heal
 		elif action.mana_gained > 0:
@@ -127,7 +133,7 @@ func cast_combat_action(action):
 				if cur_mana > max_mana:
 					cur_mana = max_mana
 				_update_mana_bar()
-				print("You gained", str(action.mana_gained), "MANA!")
+				print("You gained ", str(action.mana_gained), " MANA!")
 				Global.attack_type = "ManaGain"
 				Global.dmg_dealt = action.mana_gained
 			else:

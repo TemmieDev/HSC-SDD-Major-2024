@@ -1,9 +1,10 @@
 extends CanvasLayer
 
-
-func _on_button_pressed():
-	get_tree().quit()
-
+func startbattle():
+	$AnimationPlayer.play("TransIn")
+	$SFX.play()
+	await get_tree().create_timer(1).timeout
+	$AnimationPlayer.play("TransOut")
 
 func _on_button_3_pressed():
 	SaveLoad.run_save()

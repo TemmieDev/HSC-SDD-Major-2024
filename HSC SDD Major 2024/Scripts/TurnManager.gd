@@ -16,7 +16,13 @@ func _ready():
 	Global.battle_over = false
 	begin_next_turn()
 	$BattleMusic.play()
-	
+	if Global.cur_location == "World":
+		$CanvasLayer/Background.texture = load("res://Extra Art/battleback1.png")
+	elif Global.cur_location == "Dungeon":
+		$CanvasLayer/Background.texture = load("res://Extra Art/battleback5.png")
+	else:
+		$CanvasLayer/Background.texture = load("res://Extra Art/battleback1.png")
+	Global.inBattle = true
 
 func begin_next_turn():
 	if cur_char == player_char:
@@ -55,4 +61,5 @@ func character_died(character):
 		$HUD/AnimationPlayer.play("FadeIn")
 		await get_tree().create_timer(2).timeout
 		get_tree().paused = false
+		Global.inBattle = false
 		queue_free()
