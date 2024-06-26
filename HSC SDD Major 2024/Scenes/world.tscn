@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctfgosmwjq8wq"]
+[gd_scene load_steps=10 format=3 uid="uid://ctfgosmwjq8wq"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_gr8dy"]
 [ext_resource type="TileSet" uid="uid://y8v1li5wj4m1" path="res://Tilesets/world.tres" id="1_savwv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://r75keyyrbe3n" path="res://Scenes/hud.tscn" id="5_mksef"]
 [ext_resource type="AudioStream" uid="uid://dl2s0ap1aiwg0" path="res://Music/Walking the World.ogg" id="7_jurqm"]
 [ext_resource type="PackedScene" uid="uid://xvvcji1611d3" path="res://Scenes/eleonore.tscn" id="7_tw80h"]
+[ext_resource type="Script" path="res://Scripts/BackgroundMusic.gd" id="7_up1rv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lihjk"]
 size = Vector2(20, 90)
@@ -36,7 +37,7 @@ position = Vector2(260, 23)
 layer = 2
 
 [node name="Eleonore" parent="." instance=ExtResource("7_tw80h")]
-position = Vector2(98, 179)
+position = Vector2(213, 54)
 
 [node name="collisions" type="StaticBody2D" parent="."]
 
@@ -57,7 +58,9 @@ position = Vector2(296, 121)
 shape = SubResource("CircleShape2D_r5crq")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_jurqm")
+script = ExtResource("7_up1rv")
 
 [connection signal="body_entered" from="collisions/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Chest 1" to="." method="_on_chest_1_body_entered"]

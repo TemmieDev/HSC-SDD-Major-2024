@@ -7,7 +7,9 @@ func _ready():
 	$BackgroundMusic.play()
 	Global.cur_location = "World"
 	SaveLoad.run_load()
-	Global.levelup()
+	Global.encounter = true
+	if Global.newPlayer == true:
+		Global.levelup()
 
 func _physics_process(delta):
 	if chest_detect == true and talking == false:
@@ -37,5 +39,5 @@ func _on_area_2d_body_entered(body):
 	if body.has_method("player"):
 		$HUD/AnimationPlayer.play("TransIn")
 		$HUD/SFX.play()
-		await get_tree().create_timer(0.5).timeout
-		get_tree().change_scene_to_file("res://Scenes/dungeon.tscn")
+		await get_tree().create_timer(1).timeout
+		SceneChanger.switch_scene("res://Scenes/dungeon.tscn")

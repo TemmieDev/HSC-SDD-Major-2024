@@ -7,7 +7,7 @@ var stamina = 3
 var running = false
 var walking = false
 @onready var stamina_bar = $"AnimatedSprite2D/Stamina Bar"
-@onready var tilemap = get_tree().current_scene.find_child("TileMap")
+@onready var tilemap
 
 var area : String = "": 
 	set(value): 
@@ -23,9 +23,15 @@ var distance_in_pixel: float = 0.0:
 		
 		%Distance.text = "%d" % step
 		
-		if step >= Manager.encounter_number:
+		if step >= Manager.encounter_number and Global.encounter == true:
+			$"../HUD/AnimationPlayer".play("TransIn")
+			$"../HUD/SFX".play()
+			Global.inBattle = true
 			Manager.change_scene()
 			distance_in_pixel = 0.0
+			Manager.encounterNum()
+			await get_tree().create_timer(1).timeout
+			$"../HUD/AnimationPlayer".play("TransOut")
 
 func _ready():
 	$AnimatedSprite2D.play("down_idle")
@@ -35,7 +41,8 @@ func _physics_process(delta):
 	Manager.playerArea = area
 	var initial_position = position
 	update_tile()
-	player_movement(delta)
+	if Global.inDialog == false:
+		player_movement(delta)
 	distance_in_pixel += position.distance_to(initial_position)
 	run(delta)
 	if Input.is_action_pressed("run") and walking == true:
@@ -44,6 +51,9 @@ func _physics_process(delta):
 		running = false
 	stamina_bar.value = stamina
 	Global.player_pos = self.position
+	if Global.cur_location == "Dungeon":
+		tilemap = get_tree().current_scene.find_child("TileMap")
+
 
 func player_movement(delta):
 	if Input.is_action_pressed("move_right"):
@@ -131,6 +141,10 @@ func player():
 	pass
 
 func update_tile():
-	var tiledata = tilemap.get_cell_tile_data(0, tilemap.local_to_map(position))
-	if tiledata:
-		area = tiledata.get_custom_data("Area")
+	if Global.cur_location == "Dungeon":
+		await get_tree().create_timer(0.1).timeout
+		var tiledata = tilemap.get_cell_tile_data(0, tilemap.local_to_map(position))
+		if tiledata:
+			area = tiledata.get_custom_data("Area")
+
+

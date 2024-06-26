@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cwrrm8q7pkl1k"]
+
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_1eieo"]
+[ext_resource type="Texture2D" uid="uid://csqqcayuwnyxy" path="res://Extra Art/sword_03c.png" id="1_w6q0f"]
+
+[resource]
+script = ExtResource("1_1eieo")
+icon = ExtResource("1_w6q0f")
+name = "Sword"
+cost = 100.0
+desc = "A basic sword for beginners"

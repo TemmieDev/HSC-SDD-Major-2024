@@ -250,6 +250,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_dt1h1")
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_elddr")
+bus = &"SFX"
 
 [node name="Fade" type="Panel" parent="."]
 visible = false

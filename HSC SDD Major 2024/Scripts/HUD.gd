@@ -6,6 +6,7 @@ func startbattle():
 	await get_tree().create_timer(1).timeout
 	$AnimationPlayer.play("TransOut")
 
+
 func _on_button_3_pressed():
 	SaveLoad.run_save()
 

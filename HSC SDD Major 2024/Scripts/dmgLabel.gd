@@ -19,6 +19,8 @@ func _process(delta):
 	dmg = Global.dmg_dealt
 	type = Global.attack_type
 	attacker = Global.attacker
+	if attacker == "Player":
+		attacker = Global.playerName
 	if Global.battle_over == true:
 		if Global.winner == "Player":
 			self.show()
@@ -39,23 +41,23 @@ func panel_change():
 	self.show()
 	if type == "Attack":
 		label.text = str(attacker, " dealt ", dmg, " damage!")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		self.hide()
 	if type == "Heal":
 		label.text = str(attacker, " healed ", dmg, " health!")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		self.hide()
 	if type == "ManaGain":
 		label.text = str(attacker, " restored ", dmg,  " mana!")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		self.hide()
 	if type == "Miss":
 		label.text = str(attacker, "'s attack missed! ")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		self.hide()
 	if type == "NoMana":
 		label.text = str(attacker, " doesn't have enough mana!")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(2).timeout
 		self.hide()
 	if type == "Nothing":
 		label.text = str("Nothing happened!")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xvvcji1611d3"]
+[gd_scene load_steps=17 format=3 uid="uid://xvvcji1611d3"]
 
 [ext_resource type="Texture2D" uid="uid://b1w2686r6tm7a" path="res://Character Art/Eleonore/Idle/Idle1.png" id="1_0qbj6"]
 [ext_resource type="Script" path="res://Scripts/eleonore.gd" id="1_p0xfj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btmv2wgpvdsnr" path="res://Character Art/Eleonore/Idle/Idle7.png" id="7_pv1tk"]
 [ext_resource type="Texture2D" uid="uid://bqeoenjwn2xqn" path="res://Character Art/Eleonore/Idle/Idle8.png" id="8_ui2ff"]
 [ext_resource type="Texture2D" uid="uid://rf8glffv7bdn" path="res://Character Art/Eleonore/Idle/Idle9.png" id="9_ik0lv"]
+[ext_resource type="Texture2D" uid="uid://d3uel0cbicd2q" path="res://Extra Art/keyboard_f.png" id="11_xuuvx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xb416"]
 animations = [{
@@ -52,7 +53,16 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_onisw"]
 radius = 29.0172
 
+[sub_resource type="SystemFont" id="SystemFont_304yh"]
+font_names = PackedStringArray("Eight Bit Dragon")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_geqes"]
+font = SubResource("SystemFont_304yh")
+font_size = 10
+
 [node name="Eleonore" type="CharacterBody2D"]
+process_mode = 3
 script = ExtResource("1_p0xfj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -69,6 +79,19 @@ shape = SubResource("CircleShape2D_88uik")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detectionarea"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_onisw")
+
+[node name="Talk" type="Label" parent="."]
+offset_left = -7.0
+offset_top = -44.0
+offset_right = 18.0
+offset_bottom = -34.0
+text = "Shop"
+label_settings = SubResource("LabelSettings_geqes")
+
+[node name="Sprite2D" type="Sprite2D" parent="Talk"]
+position = Vector2(-5, 5)
+scale = Vector2(0.183194, 0.183194)
+texture = ExtResource("11_xuuvx")
 
 [connection signal="body_entered" from="detectionarea" to="." method="_on_detectionarea_body_entered"]
 [connection signal="body_exited" from="detectionarea" to="." method="_on_detectionarea_body_exited"]

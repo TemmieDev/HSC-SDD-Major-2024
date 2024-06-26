@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HSC SDD Major 2024"
-run/main_scene="res://Scenes/world.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,16 +20,21 @@ config/icon="res://icon.svg"
 Manager="*res://Scenes/manager.tscn"
 Global="*res://Scripts/Global.gd"
 SaveLoad="*res://Scripts/SaveLoad.gd"
+UI="*res://Scenes/UI.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+InvShopManager="*res://Scripts/InvShopManager.gd"
+SceneChanger="*res://Scripts/SceneChanger.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"Eleonore": "res://Dialogic/Dialogic Characters/Eleonore.dch"
+"Eleonore": "res://Dialogic/Dialogic Characters/Eleonore.dch",
+"blank": "res://Dialogic/Dialogic Characters/blank.dch"
 }
 directories/dtl_directory={
 "Chest Interaction": "res://Dialogic/Dialogic Timelines/Chest Interaction.dtl",
-"Eleonore Test": "res://Dialogic/Dialogic Timelines/Eleonore Test.dtl"
+"Eleonore Test": "res://Dialogic/Dialogic Timelines/Eleonore Test.dtl",
+"NewPlayer": "res://Dialogic/Dialogic Timelines/NewPlayer.dtl"
 }
 text/letter_speed=0.025
 text/initial_text_reveal_skippable=true
@@ -50,7 +55,11 @@ text/autopauses={}
 layout/style_list=["res://Dialogic/Dialogic Styles/Dialogic Style.tres"]
 layout/default_style="res://Dialogic/Dialogic Styles/Dialogic Style.tres"
 glossary/default_case_sensitive=true
-variables={}
+variables={
+"inShop": false,
+"newPlayer": true,
+"playerName": "Player"
+}
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/fade_in_up.gd"
 animations/leave_default="res://addons/dialogic/Modules/Character/DefaultAnimations/fade_out_down.gd"
 
@@ -64,6 +73,10 @@ window/size/resizable=false
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/gaea/plugin.cfg")
+
+[gui]
+
+theme/custom_font="res://Fonts/EightBitDragon-anqx.ttf"
 
 [input]
 
@@ -103,7 +116,7 @@ run={
 }
 interact={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"echo":false,"script":null)
 ]
 }
 menu={
@@ -115,5 +128,5 @@ menu={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.0235294, 0.603922, 0.580392, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 viewport/hdr_2d=true

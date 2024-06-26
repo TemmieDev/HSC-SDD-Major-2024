@@ -5,7 +5,7 @@ extends Node
 var cur_char : Character
 @onready var camera = $BattleCam
 
-@export var next_turn_delay : float = 1.5
+@export var next_turn_delay : float = 2.5
 
 var game_over : bool = false
 
@@ -53,7 +53,18 @@ func character_died(character):
 		print("Game Over")
 		$GameOver.play()
 		Global.winner = Global.enemy
+		await get_tree().create_timer(2).timeout
+		$HUD/AnimationPlayer.play("FadeIn")
+		await get_tree().create_timer(2).timeout
+		get_tree().paused = false
+		Global.inBattle = false
+		SceneChanger.switch_scene("res://Scenes/main_menu.tscn")
+		queue_free()
+		
 	else:
+		Global.current_xp += Global.xp_earned
+		Global.gold += Global.gold_earned
+		print(Global.current_xp)
 		print("You Win")
 		$Victory.play()
 		Global.winner = "Player"

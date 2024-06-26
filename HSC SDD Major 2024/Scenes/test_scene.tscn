@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj8ydnitwc1y6"]
+
+[ext_resource type="Texture2D" uid="uid://csqqcayuwnyxy" path="res://Extra Art/sword_03c.png" id="3_hs16g"]
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="4_l25ln"]
+[ext_resource type="PackedScene" uid="uid://r0sg1bthy4mr" path="res://Scenes/player.tscn" id="6_8ckr3"]
+[ext_resource type="PackedScene" uid="uid://xvvcji1611d3" path="res://Scenes/eleonore.tscn" id="7_bu56m"]
+
+[sub_resource type="Resource" id="Resource_tv665"]
+script = ExtResource("4_l25ln")
+icon = ExtResource("3_hs16g")
+name = "Test Item"
+cost = 100.0
+desc = "This is a test item for testing purposes"
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("6_8ckr3")]
+position = Vector2(1, 87)
+
+[node name="Eleonore" parent="." instance=ExtResource("7_bu56m")]
+items = Array[ExtResource("4_l25ln")]([SubResource("Resource_tv665"), SubResource("Resource_tv665")])
+
+[node name="TileMap" type="TileMap" parent="."]
+format = 2

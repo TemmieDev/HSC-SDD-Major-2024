@@ -8,8 +8,8 @@ class_name Character
 var player_data = PlayerData.new()
 
 @export var is_player : bool
-@export var cur_hp : int = 25
-@export var max_hp : int = 25
+@export var cur_hp : int = 15
+@export var max_hp : int = 15
 @export var cur_mana : int = 15
 @export var max_mana : int = 15
 
@@ -47,10 +47,6 @@ func _ready():
 	enemy = Global.enemy
 	if is_player != true:
 		enemy_type()
-		max_mana = max_mana * magic /5
-		cur_mana = cur_mana * magic /5
-		max_hp = max_hp * vitality /5
-		cur_hp = cur_hp * vitality /5
 	cur_mana = clamp(cur_mana, 0, max_mana)
 	cur_hp = clamp(cur_hp, 0, max_hp)
 	health_text.text = str(cur_hp, "/", max_hp)
@@ -115,20 +111,20 @@ func cast_combat_action(action):
 				print("You missed!")
 				Global.attack_type = "Miss"
 			else:
-				action.damage = strength + (random.randi_range(action.min_dmg, action.max_dmg)/2)
+				action.damage = random.randi_range(action.min_dmg, action.max_dmg) + (strength * 2)
 				opponent.take_damage(action.damage)
 				print("You dealt ", str(action.damage), " DMG!")
 				Global.attack_type = "Attack"
 				Global.dmg_dealt = action.damage
 		elif action.heal > 0:
-			action.heal = magic + (random.randi_range(action.min_heal, action.max_heal)/2)
+			action.heal = random.randi_range(action.min_heal, action.max_heal) + (magic * 2)
 			heal(action.heal)
 			print("You healed ", str(action.heal), " HP!")
 			Global.attack_type = "Heal"
 			Global.dmg_dealt = action.heal
 		elif action.mana_gained > 0:
 			if cur_mana < max_mana:
-				action.mana_gained = randi_range(action.min_mana, action.max_mana)
+				action.mana_gained = randi_range(action.min_mana, action.max_mana) + (magic * 2)
 				cur_mana += action.mana_gained
 				if cur_mana > max_mana:
 					cur_mana = max_mana
@@ -163,12 +159,18 @@ func _decide_combat_action():
 
 func enemy_type():
 	if enemy == "Skeleton":
-		strength = 5
-		vitality = 5
+		strength = 10
+		max_hp = 40
+		cur_hp = 40
 		magic = 5
+		Global.xp_earned = randi_range(15, 30)
+		Global.gold_earned = randi_range(10, 20)
 		visual = load("res://Character Art/Skeleton/SkeletonBattle.png")
 	elif enemy == "Orc":
-		strength = 10
-		vitality = 20
+		strength = 30
+		cur_hp = 100
+		max_hp = 100
 		magic = 0
+		Global.xp_earned = randi_range(90, 150)
+		Global.gold_earned = randi_range(30, 60)
 		visual = load("res://Character Art/Orc/OrcBattle.png")

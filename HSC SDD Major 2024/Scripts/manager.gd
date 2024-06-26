@@ -18,8 +18,7 @@ var dungeonEnemies = [
 ]
 
 func _ready():
-	randomize()
-	encounter_number = randi_range(25,50)
+	encounterNum()
 
 func change_scene():
 	var enemy
@@ -34,3 +33,7 @@ func change_scene():
 	await get_tree().create_timer(1).timeout
 	var battleTemp = battle.instantiate()
 	get_parent().add_child(battleTemp)
+
+func encounterNum():
+	randomize()
+	encounter_number = randi_range(50,200)

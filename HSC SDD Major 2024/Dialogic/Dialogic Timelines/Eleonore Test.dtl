@@ -3,6 +3,8 @@ label Start
 Eleonore (Default): Need something?
 - SHOP
 	Eleonore (Book): Here's what I got.
+	set {inShop} = true
+	[end_timeline]
 - TALK
 	Eleonore (Default): What do you want to talk about?
 	- Test

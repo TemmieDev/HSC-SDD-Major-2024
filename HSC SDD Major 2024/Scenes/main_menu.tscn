@@ -1,0 +1,243 @@
+[gd_scene load_steps=7 format=3 uid="uid://canx8xqujtt6j"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_8er68"]
+[ext_resource type="PackedScene" uid="uid://tasqcvt50jbi" path="res://Scenes/volumeslider.tscn" id="2_fyeud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dwb6d"]
+font_size = 100
+
+[sub_resource type="SystemFont" id="SystemFont_kavi3"]
+font_names = PackedStringArray("Eight Bit Dragon")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km7lp"]
+bg_color = Color(0.894118, 0.580392, 0.360784, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj434"]
+font_size = 35
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8er68")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Main" type="Node2D" parent="CanvasLayer"]
+
+[node name="Label" type="Label" parent="CanvasLayer/Main"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 670.0
+offset_top = 174.0
+offset_right = 1250.0
+offset_bottom = 274.0
+grow_horizontal = 2
+text = "Infinigeon"
+label_settings = SubResource("LabelSettings_dwb6d")
+
+[node name="Play" type="Button" parent="CanvasLayer/Main"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.0
+offset_top = 500.0
+offset_right = 1045.0
+offset_bottom = 580.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "Play"
+
+[node name="Options" type="Button" parent="CanvasLayer/Main"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.0
+offset_top = 643.0
+offset_right = 1045.0
+offset_bottom = 723.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "Options"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Main"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.0
+offset_top = 790.0
+offset_right = 1045.0
+offset_bottom = 870.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "Quit"
+
+[node name="Help" type="Button" parent="CanvasLayer/Main"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1764.0
+offset_top = 930.0
+offset_right = 1845.0
+offset_bottom = 1010.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "?"
+
+[node name="Options" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="Back" type="Button" parent="CanvasLayer/Options"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.0
+offset_top = 934.0
+offset_right = 1045.0
+offset_bottom = 1014.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "Back"
+
+[node name="Label2" type="Label" parent="CanvasLayer/Options"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 728.0
+offset_top = 174.0
+offset_right = 1180.0
+offset_bottom = 274.0
+grow_horizontal = 2
+text = "Options
+"
+label_settings = SubResource("LabelSettings_dwb6d")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Options"]
+offset_left = 723.0
+offset_top = 480.0
+offset_right = 1210.0
+offset_bottom = 916.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_km7lp")
+
+[node name="Master" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
+offset_left = 749.0
+offset_top = 553.0
+offset_right = 1180.0
+offset_bottom = 595.0
+bus_name = "Master"
+
+[node name="Music" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
+offset_left = 749.0
+offset_top = 645.0
+offset_right = 1180.0
+offset_bottom = 687.0
+bus_name = "Music"
+
+[node name="SFX" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
+offset_left = 749.0
+offset_top = 727.0
+offset_right = 1180.0
+offset_bottom = 769.0
+bus_name = "SFX"
+
+[node name="Label" type="Label" parent="CanvasLayer/Options"]
+offset_left = 753.0
+offset_top = 545.0
+offset_right = 822.0
+offset_bottom = 562.0
+text = "Master"
+
+[node name="Label3" type="Label" parent="CanvasLayer/Options"]
+offset_left = 758.0
+offset_top = 639.0
+offset_right = 810.0
+offset_bottom = 656.0
+text = "Music"
+
+[node name="Label4" type="Label" parent="CanvasLayer/Options"]
+offset_left = 755.0
+offset_top = 719.0
+offset_right = 795.0
+offset_bottom = 736.0
+text = "SFX"
+
+[node name="Help" type="Node2D" parent="CanvasLayer"]
+visible = false
+
+[node name="Label2" type="Label" parent="CanvasLayer/Help"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 829.0
+offset_top = 174.0
+offset_right = 1069.0
+offset_bottom = 274.0
+grow_horizontal = 2
+text = "Help"
+label_settings = SubResource("LabelSettings_dwb6d")
+
+[node name="Back2" type="Button" parent="CanvasLayer/Help"]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 713.0
+offset_top = 934.0
+offset_right = 1045.0
+offset_bottom = 1014.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_fonts/font = SubResource("SystemFont_kavi3")
+theme_override_font_sizes/font_size = 35
+text = "Back"
+
+[node name="Label" type="Label" parent="CanvasLayer/Help"]
+offset_left = 552.0
+offset_top = 339.0
+offset_right = 1362.0
+offset_bottom = 895.0
+text = "The objective of Infinigeon is to head into the randomly generating dungeon and try to defeat as many monsters as you can in order to level up and become stronger over time. The more you level up the higher your stats (Strength, Vitality and Magic) will level up which all individually affect your stats. You are able to return to the base at any time in the dungeon in the case that you may get stuck or have run out of places to explore."
+label_settings = SubResource("LabelSettings_pj434")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="pressed" from="CanvasLayer/Main/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/Help" to="." method="_on_help_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Help/Back2" to="." method="_on_back_2_pressed"]

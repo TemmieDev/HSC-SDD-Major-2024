@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://qokrdnhhoycu"]
+[gd_scene load_steps=19 format=3 uid="uid://qokrdnhhoycu"]
 
-[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_kn8gm"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_kn8gm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmhnm"]
 bg_color = Color(0, 0, 0, 1)
@@ -16,21 +16,21 @@ corner_radius_bottom_left = 5
 [sub_resource type="SystemFont" id="SystemFont_416lf"]
 font_names = PackedStringArray("Eight Bit Dragon")
 
-[sub_resource type="SystemFont" id="SystemFont_bjmhu"]
+[sub_resource type="SystemFont" id="SystemFont_0gf2o"]
 font_names = PackedStringArray("Eight Bit Dragon")
 
 [sub_resource type="LabelSettings" id="LabelSettings_3kxw3"]
-font = SubResource("SystemFont_bjmhu")
+font = SubResource("SystemFont_0gf2o")
 font_size = 25
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5vxy"]
-bg_color = Color(0.647059, 0.878431, 0.658824, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvf1n"]
 bg_color = Color(0.258824, 0.658824, 0.290196, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1txwj"]
-bg_color = Color(0.580392, 0.85098, 0.992157, 1)
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4a7ca"]
 bg_color = Color(0.301961, 0.537255, 1, 1)
@@ -38,11 +38,40 @@ bg_color = Color(0.301961, 0.537255, 1, 1)
 [sub_resource type="SystemFont" id="SystemFont_t5151"]
 font_names = PackedStringArray("Eight Bit Dragon")
 
+[sub_resource type="SystemFont" id="SystemFont_coxo1"]
+font_names = PackedStringArray("Eight Bit Dragon")
+
+[sub_resource type="LabelSettings" id="LabelSettings_r6xvc"]
+font = SubResource("SystemFont_coxo1")
+font_size = 25
+
+[sub_resource type="SystemFont" id="SystemFont_kg288"]
+font_names = PackedStringArray("Eight Bit Dragon")
+
+[sub_resource type="LabelSettings" id="LabelSettings_65ur3"]
+font = SubResource("SystemFont_kg288")
+font_size = 25
+
+[sub_resource type="SystemFont" id="SystemFont_x8jhp"]
+font_names = PackedStringArray("Eight Bit Dragon")
+
+[sub_resource type="LabelSettings" id="LabelSettings_22ig7"]
+font = SubResource("SystemFont_x8jhp")
+font_size = 25
+
+[sub_resource type="SystemFont" id="SystemFont_8jtbx"]
+font_names = PackedStringArray("Eight Bit Dragon")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyh1s"]
+font = SubResource("SystemFont_8jtbx")
+font_size = 25
+
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_kn8gm")
 
 [node name="MenuBase" type="Panel" parent="."]
+z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -69,9 +98,9 @@ text = "Close"
 [node name="Health" type="Label" parent="MenuBase"]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 46.0
+offset_top = 27.0
 offset_right = 268.0
-offset_bottom = 72.0
+offset_bottom = 53.0
 text = "Health: 50/50"
 label_settings = SubResource("LabelSettings_3kxw3")
 
@@ -88,9 +117,9 @@ show_percentage = false
 [node name="Mana" type="Label" parent="MenuBase"]
 layout_mode = 0
 offset_left = 42.0
-offset_top = 98.0
+offset_top = 79.0
 offset_right = 268.0
-offset_bottom = 124.0
+offset_bottom = 105.0
 text = "Mana: 50/50"
 label_settings = SubResource("LabelSettings_3kxw3")
 
@@ -114,5 +143,66 @@ theme_override_fonts/font = SubResource("SystemFont_t5151")
 theme_override_font_sizes/font_size = 30
 text = "QUIT GAME"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="MenuBase"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 130.0
+offset_right = 314.0
+offset_bottom = 216.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuBase/VBoxContainer2"]
+layout_mode = 2
+
+[node name="PlayerName" type="Label" parent="MenuBase/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Player's Level: "
+label_settings = SubResource("LabelSettings_r6xvc")
+
+[node name="PlayerLvl" type="Label" parent="MenuBase/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "99"
+label_settings = SubResource("LabelSettings_65ur3")
+
+[node name="CurrentXP" type="Label" parent="MenuBase/VBoxContainer2"]
+layout_mode = 2
+text = "Current XP: 99"
+label_settings = SubResource("LabelSettings_22ig7")
+
+[node name="XPUntilNext" type="Label" parent="MenuBase/VBoxContainer2"]
+layout_mode = 2
+text = "XP needed for next Lvl: 99"
+label_settings = SubResource("LabelSettings_22ig7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuBase"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 233.0
+offset_right = 238.0
+offset_bottom = 319.0
+
+[node name="Strength" type="Label" parent="MenuBase/VBoxContainer"]
+layout_mode = 2
+text = "Strength: 99"
+label_settings = SubResource("LabelSettings_cyh1s")
+
+[node name="Vitality" type="Label" parent="MenuBase/VBoxContainer"]
+layout_mode = 2
+text = "Vitality: 99"
+label_settings = SubResource("LabelSettings_cyh1s")
+
+[node name="Magic" type="Label" parent="MenuBase/VBoxContainer"]
+layout_mode = 2
+text = "Magic: 99"
+label_settings = SubResource("LabelSettings_cyh1s")
+
+[node name="Button" type="Button" parent="MenuBase"]
+layout_mode = 0
+offset_left = 390.0
+offset_top = 392.0
+offset_right = 657.0
+offset_bottom = 479.0
+text = "get xp"
+
 [connection signal="pressed" from="MenuBase/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="MenuBase/QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="MenuBase/Button" to="." method="_on_button_pressed"]
