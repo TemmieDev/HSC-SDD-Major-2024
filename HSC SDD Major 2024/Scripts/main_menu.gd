@@ -15,6 +15,8 @@ func _process(delta):
 
 
 func _on_play_pressed():
+	Global.player_cur_hp = Global.player_max_hp
+	Global.player_cur_mana = Global.player_max_mana
 	Global.inMenu = false
 	SceneChanger.switch_scene("res://Scenes/Base.tscn")
 

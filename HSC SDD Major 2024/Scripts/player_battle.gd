@@ -102,6 +102,7 @@ func _on_character_begin_turn(character):
 	if character == self and is_player == false:
 		_decide_combat_action()
 
+#Calculate the value of the action and  then perform it
 func cast_combat_action(action):
 	if action.mana_cost <= cur_mana:
 		cur_mana -= action.mana_cost
@@ -142,6 +143,7 @@ func cast_combat_action(action):
 	
 	battle_scene.end_current_turn()
 
+#Enemy AI deciding what action to do
 func _decide_combat_action():
 	emit_signal("enemy_turn")
 	var health_percent = float(cur_hp) / float(max_hp)
@@ -153,7 +155,7 @@ func _decide_combat_action():
 				return
 			else:
 				continue
-		else:
+		else:	
 			cast_combat_action(action)
 			return
 

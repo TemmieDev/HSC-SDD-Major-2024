@@ -3,7 +3,6 @@ extends Node
 @export var player_char : Node
 @export var enemy_char : Node
 var cur_char : Character
-@onready var camera = $BattleCam
 
 @export var next_turn_delay : float = 2.5
 
@@ -24,6 +23,7 @@ func _ready():
 		$CanvasLayer/Background.texture = load("res://Extra Art/battleback1.png")
 	Global.inBattle = true
 
+#Swtich players
 func begin_next_turn():
 	if cur_char == player_char:
 		cur_char = enemy_char

@@ -21,9 +21,9 @@ Manager="*res://Scenes/manager.tscn"
 Global="*res://Scripts/Global.gd"
 SaveLoad="*res://Scripts/SaveLoad.gd"
 UI="*res://Scenes/UI.tscn"
-Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 InvShopManager="*res://Scripts/InvShopManager.gd"
 SceneChanger="*res://Scripts/SceneChanger.gd"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
@@ -57,7 +57,6 @@ layout/default_style="res://Dialogic/Dialogic Styles/Dialogic Style.tres"
 glossary/default_case_sensitive=true
 variables={
 "inShop": false,
-"newPlayer": true,
 "playerName": "Player"
 }
 animations/join_default="res://addons/dialogic/Modules/Character/DefaultAnimations/fade_in_up.gd"

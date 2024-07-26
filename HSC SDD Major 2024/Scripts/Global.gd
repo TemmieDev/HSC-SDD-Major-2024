@@ -1,6 +1,6 @@
 extends Node
 
-
+var inSubMenu : bool = false
 var inMenu : bool = true
 @export var enemy : String = ""
 
@@ -64,7 +64,6 @@ func _ready():
 func _physics_process(delta):
 	playerMaxXP = get_max_xp_at(Level)
 	playerName = Dialogic.VAR.playerName
-	newPlayer = Dialogic.VAR.newPlayer
 	inShop = Dialogic.VAR.inShop
 	gold = InvShopManager.currency
 

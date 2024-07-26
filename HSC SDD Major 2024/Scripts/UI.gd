@@ -21,6 +21,7 @@ func _physics_process(delta):
 			menu.show()
 			get_tree().paused = true
 			menu_visible == true
+			Global.inSubMenu = true
 	else:
 		pass
 	$MenuBase/Health.text = str("Health: ", Global.player_cur_hp, "/", Global.player_max_hp)
@@ -40,6 +41,7 @@ func _on_close_pressed():
 	menu.hide()
 	get_tree().paused = false
 	menu_visible == false
+	Global.inSubMenu = false
 
 
 func _on_quit_game_pressed():
@@ -77,7 +79,7 @@ func set_value(item : Item):
 
 func _on_close_shop_pressed():
 	%Manager.hide()
-	if menu_visible == true:
+	if Global.inSubMenu == true:
 		%MenuBase.show()
 	Global.inDialog = false
 

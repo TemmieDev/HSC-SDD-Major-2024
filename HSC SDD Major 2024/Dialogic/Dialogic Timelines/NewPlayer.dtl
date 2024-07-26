@@ -1,7 +1,5 @@
 join blank (None) 1
-blank (None): Oh? A new traveller?
-blank (None): What is your name?
+blank (None): State your name.
 [text_input text="Your name:" var="playerName"]
 blank (None): Very good.
 blank (None): I await the begining of your journey.
-set {newPlayer} = false

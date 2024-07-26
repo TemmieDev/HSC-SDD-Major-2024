@@ -286,11 +286,21 @@ text = "Close"
 [node name="Title" type="Label" parent="Manager"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 43.0
-offset_top = 43.0
-offset_right = 456.0
-offset_bottom = 113.0
+offset_left = 279.0
+offset_top = 254.0
+offset_right = 692.0
+offset_bottom = 324.0
 text = "Inventory"
+label_settings = SubResource("LabelSettings_nrksc")
+
+[node name="Title2" type="Label" parent="Manager"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1274.0
+offset_top = 299.0
+offset_right = 1470.0
+offset_bottom = 369.0
+text = "Shop"
 label_settings = SubResource("LabelSettings_nrksc")
 
 [node name="MenuBase" type="Panel" parent="."]
@@ -318,7 +328,7 @@ offset_right = 866.0
 offset_bottom = 581.0
 theme_override_fonts/font = SubResource("SystemFont_sjsjx")
 theme_override_font_sizes/font_size = 35
-text = "Close"
+text = "Resume Game"
 
 [node name="InventoryButton" type="Button" parent="MenuBase"]
 unique_name_in_owner = true
@@ -335,9 +345,9 @@ text = "Inventory"
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 534.0
-offset_top = 315.0
+offset_top = 319.0
 offset_right = 866.0
-offset_bottom = 395.0
+offset_bottom = 399.0
 theme_override_fonts/font = SubResource("SystemFont_sjsjx")
 theme_override_font_sizes/font_size = 35
 text = "Return to Base"

@@ -17,6 +17,7 @@ var dungeonEnemies = [
 	"Skeleton", "Orc"
 ]
 
+
 func _ready():
 	encounterNum()
 
@@ -36,4 +37,8 @@ func change_scene():
 
 func encounterNum():
 	randomize()
-	encounter_number = randi_range(50,200)
+	encounter_number = randi_range(50,150)
+
+func _physics_process(delta):
+	var fps = Engine.get_frames_per_second()
+	%FPS.text = str("FPS: ", fps )

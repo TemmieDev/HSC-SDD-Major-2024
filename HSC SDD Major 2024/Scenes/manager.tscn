@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://x86su8ih1ah3"]
+[gd_scene load_steps=3 format=3 uid="uid://x86su8ih1ah3"]
 
 [ext_resource type="Script" path="res://Scripts/manager.gd" id="1_15ntg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y5flj"]
+font_size = 80
 
 [node name="Manager" type="Node2D"]
 script = ExtResource("1_15ntg")
@@ -19,3 +22,12 @@ text = "Encounter at "
 [node name="Encounter" type="Label" parent="Debug/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="FPS" type="Label" parent="Debug"]
+unique_name_in_owner = true
+offset_left = -2.0
+offset_top = 37.0
+offset_right = 162.0
+offset_bottom = 77.0
+text = "FPS: 00"
+label_settings = SubResource("LabelSettings_y5flj")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://canx8xqujtt6j"]
+[gd_scene load_steps=9 format=3 uid="uid://canx8xqujtt6j"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_8er68"]
 [ext_resource type="PackedScene" uid="uid://tasqcvt50jbi" path="res://Scenes/volumeslider.tscn" id="2_fyeud"]
@@ -11,9 +11,19 @@ font_names = PackedStringArray("Eight Bit Dragon")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km7lp"]
 bg_color = Color(0.894118, 0.580392, 0.360784, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_mwc8v"]
+font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj434"]
 font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_ihynt"]
+font_size = 30
 
 [node name="MainMenu" type="Control"]
 process_mode = 3
@@ -147,14 +157,14 @@ label_settings = SubResource("LabelSettings_dwb6d")
 offset_left = 723.0
 offset_top = 480.0
 offset_right = 1210.0
-offset_bottom = 916.0
+offset_bottom = 760.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_km7lp")
 
 [node name="Master" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
 offset_left = 749.0
-offset_top = 553.0
+offset_top = 576.0
 offset_right = 1180.0
-offset_bottom = 595.0
+offset_bottom = 618.0
 bus_name = "Master"
 
 [node name="Music" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
@@ -166,16 +176,16 @@ bus_name = "Music"
 
 [node name="SFX" parent="CanvasLayer/Options" instance=ExtResource("2_fyeud")]
 offset_left = 749.0
-offset_top = 727.0
+offset_top = 705.0
 offset_right = 1180.0
-offset_bottom = 769.0
+offset_bottom = 747.0
 bus_name = "SFX"
 
 [node name="Label" type="Label" parent="CanvasLayer/Options"]
 offset_left = 753.0
-offset_top = 545.0
+offset_top = 568.0
 offset_right = 822.0
-offset_bottom = 562.0
+offset_bottom = 585.0
 text = "Master"
 
 [node name="Label3" type="Label" parent="CanvasLayer/Options"]
@@ -187,10 +197,18 @@ text = "Music"
 
 [node name="Label4" type="Label" parent="CanvasLayer/Options"]
 offset_left = 755.0
-offset_top = 719.0
+offset_top = 697.0
 offset_right = 795.0
-offset_bottom = 736.0
+offset_bottom = 714.0
 text = "SFX"
+
+[node name="Label5" type="Label" parent="CanvasLayer/Options"]
+offset_left = 750.0
+offset_top = 504.0
+offset_right = 843.0
+offset_bottom = 534.0
+text = "Audio"
+label_settings = SubResource("LabelSettings_mwc8v")
 
 [node name="Help" type="Node2D" parent="CanvasLayer"]
 visible = false
@@ -234,6 +252,15 @@ text = "The objective of Infinigeon is to head into the randomly generating dung
 label_settings = SubResource("LabelSettings_pj434")
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="CanvasLayer/Help"]
+offset_left = 1568.0
+offset_top = 962.0
+offset_right = 1926.0
+offset_bottom = 1068.0
+text = "If there are any bugs please email: apbatch@gmail.com"
+label_settings = SubResource("LabelSettings_ihynt")
+autowrap_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/Main/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/Options" to="." method="_on_options_pressed"]

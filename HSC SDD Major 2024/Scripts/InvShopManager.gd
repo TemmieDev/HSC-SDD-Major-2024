@@ -30,13 +30,13 @@ func open_mode(mode):
 	match mode:
 		MODE.INVENTORY:
 			%Shop.visible = false
-			%Title.text = "Inventory"
+			%Title2.hide()
 			if visible:
 				print("Inventory mode.")
 		
 		MODE.SHOP:
 			%Shop.visible = true
-			%Title.text = "Shop"
+			%Title2.show()
 			if visible:
 				print("Shop mode.")
 
